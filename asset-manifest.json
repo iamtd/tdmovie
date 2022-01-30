@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tdmovie/static/css/main.1c25aebb.css",
+    "main.js": "/tdmovie/static/js/main.9464c655.js",
+    "index.html": "/tdmovie/index.html",
+    "main.1c25aebb.css.map": "/tdmovie/static/css/main.1c25aebb.css.map",
+    "main.9464c655.js.map": "/tdmovie/static/js/main.9464c655.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c25aebb.css",
+    "static/js/main.9464c655.js"
+  ]
+}
