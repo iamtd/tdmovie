@@ -1,0 +1,36 @@
+@use '../../sass/' as *;
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  @include flex(center, center);
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+
+    background: rgba(0, 0, 0, 0.25);
+  }
+
+  &__heading {
+    position: absolute;
+    font-size: 48rem;
+    font-weight: 700;
+    line-height: 1;
+
+    color: $color-text;
+    opacity: 0.1;
+  }
+
+  &__video {
+    width: 192rem;
+    height: 100.8rem;
+  }
+}

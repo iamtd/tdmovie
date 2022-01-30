@@ -1,0 +1,15 @@
+@use '../../sass/' as *;
+.footer {
+  width: 100%;
+  padding: 4rem;
+
+  @include flex(center, unset);
+
+  background-color: $color-primary;
+  color: $color-text;
+
+  span {
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+}
