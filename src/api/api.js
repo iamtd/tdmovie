@@ -1,21 +1,35 @@
 import axios from './axios'
 
 const api = {
-  getHome: (params) => {
-    const url = '/homePage/getHome'
-    return axios.get(url, { params })
+  getHome: (page) => {
+    return axios.get('/homePage/getHome', { params: { page } })
   },
   searchLeaderBoard: () => {
-    const url = '/search/v1/searchLeaderboard'
-    return axios.get(url)
+    return axios.get('/search/v1/searchLeaderboard')
   },
-  getMovieDetail: (params) => {
-    const url = '/movieDrama/get'
-    return axios.get(url, { params })
-  },
-  getMovieMedia: (params) => {
-    const url = '/media/previewInfo'
-    return axios.get(url, { params })
+  getMovie: async (category, id) => {
+    const detail = await axios.get('/movieDrama/get', {
+      params: { category, id },
+    })
+
+    const episodeId = detail.episodeVo[0].id
+    const definition = detail.episodeVo[0].definitionList[0].code
+
+    const media = await axios.get('/media/previewInfo', {
+      params: {
+        category,
+        contentId: id,
+        episodeId,
+        definition,
+      },
+    })
+
+    const mediaUrl = media.mediaUrl
+
+    console.log('detail: ', detail)
+    console.log('media url:', media)
+
+    return { detail, mediaUrl }
   },
 }
 

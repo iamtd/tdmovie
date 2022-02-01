@@ -9,20 +9,15 @@ const Home = () => {
   const [recommendItems, setRecommendItems] = useState([])
 
   useEffect(() => {
-    const getRecommandItems = async () => {
-      const params = { page: 0 }
-      const response = await api.getHome(params)
+    const getHome = async (page) => {
+      const response = await api.getHome(page)
+      console.log(response)
       setRecommendItems(
-        response.data.recommendItems.slice(
-          2,
-          response.data.recommendItems.length - 1
-        )
+        response.recommendItems.filter((el) => el.homeSectionType !== 'BANNER')
       )
     }
-    getRecommandItems()
+    getHome(1)
   }, [])
-
-  console.log(recommendItems)
 
   return (
     <>

@@ -8,7 +8,7 @@ const MovieList = ({ item }) => {
 
   return (
     <div className="movie__list">
-      <h2>{item.homeSectionName}</h2>
+      <h2>{item.homeSectionName.replace('on Loklok', '')}</h2>
 
       <Swiper spaceBetween={0} slidesPerView={'auto'}>
         {movies.map((movie) => (

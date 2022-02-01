@@ -6,68 +6,49 @@ import api from '../../api/api'
 import './detail.scss'
 
 const Detail = () => {
-  let { category, id } = useParams()
+  let { category, id, episode } = useParams()
+  console.log(episode)
   let categoryId
   categoryId = category === 'movie' ? '0' : '1'
 
-  const [movie, setMovie] = useState({})
-  const [video, setVideo] = useState({})
-  const [episodeId, setEpisodeId] = useState('')
+  const [movieDetail, setMovieDetail] = useState({})
+  const [mediaUrl, setMediaUrl] = useState({})
 
   useEffect(() => {
-    const params = {
-      category: categoryId,
-      id: id,
+    const getMovie = async (category, id, episode) => {
+      const { detail, mediaUrl } = await api.getMovie(category, id, episode)
+      setMovieDetail(detail)
+      setMediaUrl(mediaUrl)
     }
-    const getMovieDetail = async () => {
-      const response = await api.getMovieDetail(params)
-      setMovie(response.data)
-      setEpisodeId(response.data.episodeVo[0].id)
-    }
-    getMovieDetail()
-  }, [category, id])
-
-  useEffect(() => {
-    const params = {
-      category: categoryId,
-      contentId: id,
-      episodeId: episodeId,
-      definition: 'GROOT_LD',
-    }
-
-    const getMovieMedia = async () => {
-      const response = await api.getMovieMedia(params)
-      setVideo(response.data.mediaUrl)
-    }
-    getMovieMedia()
-  }, [category, id, episodeId])
-
-  console.log('Detail: ', movie)
-  console.log('Media: ', video)
-  console.log('Episode: ', episodeId)
+    getMovie(categoryId, id, episode)
+  }, [categoryId, id, episode])
 
   return (
     <div className="detail">
       <ReactHlsPlayer
         className="detail__video"
-        src={video}
+        src={mediaUrl}
         autoPlay={false}
         controls={true}
       />
-      <h3 className="detail__title">{movie.name}</h3>
-      <span className="detail__score">{movie.score} stars</span> ||{' '}
-      <span className="detail__year">{movie.year}</span>
-      <p className="detail__description">{movie.introduction}</p>
-      <div className="episodes">
-        <span>Episodes</span>
-        {/* <ul>
-          {movie.episodeVo.map((e) => (
-            <Link to={`/${categoryId}/`}>
-              <li></li>
-            </Link>
-          ))}
-        </ul> */}
-      </div>
+      <h3 className="detail__title">{movieDetail.name}</h3>
+      <ul className="detail__tags">
+        {movieDetail.tagList
+          ? movieDetail.tagList.map((e) => <li>{e.name}</li>)
+          : 'can not load tags'}
+      </ul>
+      <span className="detail__score">{movieDetail.score} stars</span> |{' '}
+      <span className="detail__year">{movieDetail.year}</span>
+      <p className="detail__description">{movieDetail.introduction}</p>
+      <ul className="detail__episodes">
+        {typeof movieDetail.episodeVo !== 'undefined'
+          ? movieDetail.episodeVo.map((el, i) => (
+              <Link key={i} to={`/${category}/${id}?episode=${el.id}`}>
+                <li>{++i}</li>
+              </Link>
+            ))
+          : 'Error'}
+      </ul>
     </div>
   )
 }

@@ -15,10 +15,11 @@ instance.interceptors.request.use(async (config) => config)
 
 instance.interceptors.response.use(
   (response) => {
-    if (response && response.data) {
+    if (response && response.data && response.data.data) {
+      return response.data.data
+    } else if (response && response.data) {
       return response.data
     }
-
     return response
   },
   (error) => {

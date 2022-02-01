@@ -4,7 +4,7 @@
   margin: 8rem 16rem;
 
   @include mobile {
-    margin: 4rem 2rem;
+    margin: 6rem 2rem 4rem 2rem;
   }
 
   &__video {
@@ -23,8 +23,40 @@
     }
   }
 
+  &__tags {
+    margin-bottom: 1rem;
+    display: flex;
+
+    li {
+      border: 2px solid $color-secondary;
+      border-radius: 0.2rem;
+      padding: 0.4rem 0.6rem;
+    }
+
+    & > * ~ * {
+      margin-left: 1rem;
+    }
+  }
+
   &__description {
-    margin-bottom: 2rem;
+    margin: 1rem 0;
     font-size: 1.4rem;
+  }
+
+  &__episodes {
+    @include flex(unset, center);
+    margin-top: 2rem;
+
+    li {
+      @include flex(center, center);
+      width: 4rem;
+      height: 4rem;
+      border-radius: 0.4rem;
+
+      background-color: #333;
+    }
+    > * ~ * {
+      margin-left: 1rem;
+    }
   }
 }
