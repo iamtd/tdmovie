@@ -1,15 +1,20 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import ReactHlsPlayer from 'react-hls-player/dist'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import api from '../../api/api'
 
 import './detail.scss'
 
 const Detail = () => {
-  let { category, id, episode } = useParams()
-  console.log(episode)
-  let categoryId
+  let { category, id } = useParams()
+  let episode, categoryId
+
+  const [query] = useSearchParams()
+  episode = query.get('episode')
+
   categoryId = category === 'movie' ? '0' : '1'
+
+  console.log(episode)
 
   const [movieDetail, setMovieDetail] = useState({})
   const [mediaUrl, setMediaUrl] = useState({})
@@ -23,14 +28,31 @@ const Detail = () => {
     getMovie(categoryId, id, episode)
   }, [categoryId, id, episode])
 
-  return (
-    <div className="detail">
+  const CustomHls = () => {
+    const playerRef = useRef()
+    return (
       <ReactHlsPlayer
+        playerRef={playerRef}
         className="detail__video"
         src={mediaUrl}
         autoPlay={false}
         controls={true}
-      />
+      >
+        <p>Hello from HLS</p>
+        <track
+          label="English"
+          kind="subtitles"
+          srclang="en"
+          src="https://subtitles.netpop.app/subtitles/20211112/1636703466745_Happiness.S01E01.KOREAN.AppleTor.Vie.635009c1-5021-48d1-95f0-4da4ef75e056.srt"
+          default
+        ></track>
+      </ReactHlsPlayer>
+    )
+  }
+
+  return (
+    <div className="detail">
+      <CustomHls />
       <h3 className="detail__title">{movieDetail.name}</h3>
       <ul className="detail__tags">
         {movieDetail.tagList

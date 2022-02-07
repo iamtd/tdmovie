@@ -7,19 +7,20 @@ const api = {
   searchLeaderBoard: () => {
     return axios.get('/search/v1/searchLeaderboard')
   },
-  getMovie: async (category, id) => {
+  getMovie: async (category, id, episode) => {
     const detail = await axios.get('/movieDrama/get', {
       params: { category, id },
     })
 
-    const episodeId = detail.episodeVo[0].id
+    let episodeId
+    episode ? (episodeId = episode) : (episodeId = detail.episodeVo[0].id)
     const definition = detail.episodeVo[0].definitionList[0].code
 
     const media = await axios.get('/media/previewInfo', {
       params: {
         category,
         contentId: id,
-        episodeId,
+        episodeId: episodeId,
         definition,
       },
     })
