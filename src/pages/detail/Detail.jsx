@@ -33,20 +33,17 @@ const Detail = () => {
     return (
       <ReactHlsPlayer
         playerRef={playerRef}
+        hlsConfig={{
+          maxLoadingDelay: 4,
+          minAutoBitrate: 0,
+          lowLatencyMode: true,
+          enableWorker: true,
+        }}
         className="detail__video"
         src={mediaUrl}
         autoPlay={false}
         controls={true}
-      >
-        <p>Hello from HLS</p>
-        <track
-          label="English"
-          kind="subtitles"
-          srclang="en"
-          src="https://subtitles.netpop.app/subtitles/20211112/1636703466745_Happiness.S01E01.KOREAN.AppleTor.Vie.635009c1-5021-48d1-95f0-4da4ef75e056.srt"
-          default
-        ></track>
-      </ReactHlsPlayer>
+      ></ReactHlsPlayer>
     )
   }
 

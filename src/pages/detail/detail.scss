@@ -24,13 +24,23 @@
   }
 
   &__tags {
-    margin-bottom: 1rem;
-    display: flex;
+    margin-bottom: 2rem;
+    @include flex(unset, center);
+    flex-wrap: wrap;
 
     li {
-      border: 2px solid $color-secondary;
-      border-radius: 0.2rem;
-      padding: 0.4rem 0.6rem;
+      margin-top: 1rem;
+    }
+
+    @include mobile {
+      font-size: 1.4rem;
+    }
+
+    li {
+      border: 1px solid transparent;
+      border-radius: 0.4rem;
+      padding: 0.3rem 0.6rem;
+      background-color: #333;
     }
 
     & > * ~ * {
@@ -50,11 +60,12 @@
 
     li {
       @include flex(center, center);
-      width: 4rem;
-      height: 4rem;
+      width: 3rem;
+      height: 3rem;
       border-radius: 0.4rem;
       margin: 0.6rem;
 
+      font-size: 1.4rem;
       background-color: #333;
     }
   }

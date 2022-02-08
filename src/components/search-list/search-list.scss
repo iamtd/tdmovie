@@ -1,0 +1,37 @@
+@use '../../sass/' as *;
+
+.search {
+  &__list {
+    width: 100%;
+    margin-top: 4rem;
+
+    h2 {
+      margin: 6rem 0;
+      text-align: center;
+
+      font-size: 2.8rem;
+      font-weight: 500;
+
+      @include mobile {
+        font-size: 2rem;
+        margin: 3rem 0;
+      }
+    }
+
+    .swiper-slide {
+      width: 20%;
+      height: 100%;
+      height: 45rem;
+
+      @include mobile {
+        width: 47%;
+        height: 25rem;
+      }
+
+      @include tablet {
+        width: 32%;
+        height: 35rem;
+      }
+    }
+  }
+}

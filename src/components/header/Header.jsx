@@ -36,8 +36,10 @@ const Header = () => {
       </div>
 
       <div className="nav__right">
-        <div className="search">
-          <Icon icon="bx:bx-search" style={{ fontSize: '24px' }} />
+        <div className="nav__search">
+          <Link to="/search">
+            <Icon icon="bx:bx-search" style={{ fontSize: '24px' }} />
+          </Link>
         </div>
         <div className="nav__settings"></div>
       </div>

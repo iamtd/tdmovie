@@ -32,6 +32,14 @@ const api = {
 
     return { detail, mediaUrl }
   },
+  searchMovie: (keyword) => {
+    return axios.post('/search/v1/searchWithKeyWord', {
+      searchKeyWord: keyword,
+      size: 50,
+      sort: '',
+      searchType: '',
+    })
+  },
 }
 
 export default api

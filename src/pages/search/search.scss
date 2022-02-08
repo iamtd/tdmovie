@@ -1,0 +1,23 @@
+@use '../../sass' as *;
+
+.search {
+  margin-top: 10rem;
+  margin-left: 6rem;
+
+  @include mobile {
+    margin-left: 2rem;
+  }
+
+  input {
+    width: 90%;
+    padding: 1.5rem;
+    outline: none;
+    border: none;
+    border-radius: 0.4rem;
+
+    @include mobile {
+      padding: 1rem;
+      font-size: 1.4rem;
+    }
+  }
+}
