@@ -27,10 +27,14 @@ const api = {
 
     const mediaUrl = media.mediaUrl
 
-    console.log('detail: ', detail)
-    console.log('media url:', media)
+    console.log(detail)
+    console.log(mediaUrl)
 
-    return { detail, mediaUrl }
+    const subtitles = detail.episodeVo.filter((movie) => movie.id === episodeId)
+
+    // console.log('Subtitle: ', subtitles)
+
+    return { detail, mediaUrl, subtitles }
   },
   searchMovie: (keyword) => {
     return axios.post('/search/v1/searchWithKeyWord', {

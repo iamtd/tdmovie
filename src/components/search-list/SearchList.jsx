@@ -6,7 +6,7 @@ import './search-list.scss'
 const SearchList = ({ list }) => {
   return (
     <div className="search__list">
-      <h2>Results</h2>
+      {/* <h2>Results</h2> */}
       <Swiper spaceBetween={0} slidesPerView={'auto'}>
         {list.map((movie) => (
           <SwiperSlide key={movie.id}>
