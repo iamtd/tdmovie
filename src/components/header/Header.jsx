@@ -23,7 +23,9 @@ const Header = () => {
             <span>.</span>
           </Link>
         </div>
+      </div>
 
+      <div className="nav__right">
         {/* <ul className="nav__list">
           {category.map((el, i) => (
             <li key={i} className={`nav__item ${i === active ? 'active' : ''}`}>
@@ -33,12 +35,12 @@ const Header = () => {
             </li>
           ))}
         </ul> */}
-      </div>
-
-      <div className="nav__right">
         <div className="nav__search">
           <Link to="/search">
-            <Icon icon="bx:bx-search" style={{ fontSize: '24px' }} />
+            <Icon
+              icon="bx:bx-search"
+              style={{ fontSize: '2.2rem', marginLeft: '4rem' }}
+            />
           </Link>
         </div>
         <div className="nav__settings"></div>

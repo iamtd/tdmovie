@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactHlsPlayer from 'react-hls-player/dist'
-import subtitlesConvert from '../../api/subtitles'
+import subtitleConvert from '../../api/subtitle'
 
 const Player = ({ mediaUrl, subtitles }) => {
-  console.log(subtitles)
   return (
     <div>
       <ReactHlsPlayer
@@ -19,7 +18,7 @@ const Player = ({ mediaUrl, subtitles }) => {
               <track
                 key={i}
                 kind="subtitles"
-                src={subtitlesConvert(sub.subtitlingUrl)}
+                src={subtitleConvert(sub.subtitlingUrl)}
                 srcLang={sub.languageAbbr}
                 label={sub.language}
               />

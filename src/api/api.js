@@ -27,8 +27,9 @@ const api = {
 
     const mediaUrl = media.mediaUrl
 
-    console.log(detail)
-    console.log(mediaUrl)
+    console.log('Movie detail: ', detail)
+    console.log('Movie src: ', mediaUrl)
+    console.log('Episode: ', episodeId)
 
     const subtitles = detail.episodeVo.filter((movie) => movie.id === episodeId)
 
@@ -43,6 +44,9 @@ const api = {
       sort: '',
       searchType: '',
     })
+  },
+  topSearch: () => {
+    return axios.get('/search/v1/searchLeaderboard')
   },
 }
 

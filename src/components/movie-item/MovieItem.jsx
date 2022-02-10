@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { SwiperSlide } from 'swiper/react'
 import './movie-item.scss'
 
 const MovieItem = ({ movie }) => {
@@ -12,15 +11,22 @@ const MovieItem = ({ movie }) => {
   }
 
   const link = category === '0' ? `/movie/${movie.id}` : `/tv/${movie.id}`
+  let movieCover
+
+  if (movie.imageUrl) {
+    movieCover = movie.imageUrl
+  } else if (movie.coverVerticalUrl) {
+    movieCover = movie.coverVerticalUrl
+  } else {
+    movieCover = movie.cover
+  }
 
   return (
     <Link to={link}>
       <div
         className="movie__item"
         style={{
-          backgroundImage: `url(${
-            movie.imageUrl ? movie.imageUrl : movie.coverVerticalUrl
-          })`,
+          backgroundImage: `url(${movieCover})`,
         }}
       >
         <div className="movie__item--hover">

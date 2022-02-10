@@ -1,4 +1,4 @@
-const subtitlesConvert = (url) =>
+const subtitleConvert = (url) =>
   `https://srt-to-vtt.vercel.app?url=${encodeURIComponent(url)}`
 
-export default subtitlesConvert
+export default subtitleConvert

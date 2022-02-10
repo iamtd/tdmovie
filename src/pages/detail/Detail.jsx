@@ -15,8 +15,6 @@ const Detail = () => {
 
   categoryId = category === 'movie' ? '0' : '1'
 
-  console.log(episode)
-
   const [movieDetail, setMovieDetail] = useState({})
   const [mediaUrl, setMediaUrl] = useState({})
   const [subtitles, setSubtitles] = useState([])
@@ -33,17 +31,20 @@ const Detail = () => {
       setSubtitles(subtitles[0].subtitlingList)
     }
     getMovie(categoryId, id, episode)
+    window.scrollTo(0, 0)
   }, [categoryId, id, episode])
 
   return (
     <div className="detail">
       {mediaUrl ? (
         <Player mediaUrl={mediaUrl} movie={movieDetail} subtitles={subtitles} />
-      ) : null}
+      ) : (
+        'can not load movie'
+      )}
       <h3 className="detail__title">{movieDetail.name}</h3>
       <ul className="detail__tags">
         {movieDetail.tagList
-          ? movieDetail.tagList.map((e) => <li>{e.name}</li>)
+          ? movieDetail.tagList.map((e) => <li key={e.id}>{e.name}</li>)
           : 'can not load tags'}
       </ul>
       <span className="detail__score">{movieDetail.score} stars</span> |{' '}
@@ -58,6 +59,22 @@ const Detail = () => {
             ))
           : 'Error'}
       </ul>
+      <div className="detail__similar">
+        <h2>Similar</h2>
+
+        <ul>
+          {typeof movieDetail.likeList !== 'undefined'
+            ? movieDetail.likeList.map((movie, i) => (
+                <Link key={i} to={`/${movie.category}/${movie.id}`}>
+                  <li>
+                    <img src={movie.coverVerticalUrl} alt={movie.name} />
+                    <p>{movie.name}</p>
+                  </li>
+                </Link>
+              ))
+            : null}
+        </ul>
+      </div>
     </div>
   )
 }

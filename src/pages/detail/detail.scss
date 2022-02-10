@@ -40,7 +40,7 @@
       border: 1px solid transparent;
       border-radius: 0.4rem;
       padding: 0.3rem 0.6rem;
-      background-color: #333;
+      background-color: $color-primary-light;
     }
 
     & > * ~ * {
@@ -66,7 +66,42 @@
       margin: 0.6rem;
 
       font-size: 1.4rem;
-      background-color: #333;
+      background-color: $color-primary-light;
+    }
+  }
+
+  &__similar {
+    width: 100%;
+
+    h2 {
+      margin-top: 3rem;
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    ul {
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+
+      > * ~ * {
+        margin-left: 1rem;
+      }
+
+      li {
+        width: 16rem;
+
+        margin-top: 1rem;
+
+        @include mobile {
+          width: 10rem;
+        }
+
+        img {
+          width: 100%;
+        }
+      }
     }
   }
 }
