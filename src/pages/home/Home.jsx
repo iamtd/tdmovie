@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const getHome = async (page) => {
       const response = await api.getHome(page)
-      console.log(response)
+      console.log('Recommend movie: ', response)
       setRecommendItems(
         response.recommendItems.filter((el) => el.homeSectionType !== 'BANNER')
       )

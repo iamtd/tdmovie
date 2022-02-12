@@ -17,7 +17,7 @@ const SearchList = ({ list }) => {
     topSearch()
   }, [])
 
-  console.log(searchLeaderboard)
+  // console.log(searchLeaderboard)
 
   return (
     <div className="search__list">

@@ -1,7 +1,7 @@
 @use '../../sass/' as *;
 
 .detail {
-  margin: 8rem 16rem;
+  margin: 9rem 16rem;
 
   @include mobile {
     margin: 6rem 2rem 4rem 2rem;
@@ -103,5 +103,14 @@
         }
       }
     }
+  }
+
+  &__back {
+    border: none;
+    border-bottom: 2px solid $color-text;
+
+    background-color: transparent;
+    color: $color-text;
+    cursor: pointer;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams, useNavigate } from 'react-router-dom'
 import api from '../../api/api'
 
 import Player from './Player'
@@ -7,6 +7,8 @@ import Player from './Player'
 import './detail.scss'
 
 const Detail = () => {
+  const navigate = useNavigate()
+
   let { category, id } = useParams()
   let episode, categoryId
 
@@ -36,6 +38,9 @@ const Detail = () => {
 
   return (
     <div className="detail">
+      <button className="detail__back" onClick={() => navigate(-1)}>
+        Back
+      </button>
       {mediaUrl ? (
         <Player mediaUrl={mediaUrl} movie={movieDetail} subtitles={subtitles} />
       ) : (

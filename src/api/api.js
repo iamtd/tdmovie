@@ -48,6 +48,12 @@ const api = {
   topSearch: () => {
     return axios.get('/search/v1/searchLeaderboard')
   },
+  searchSuggestion: (keyword) => {
+    return axios.post('/search/searchLenovo', {
+      searchKeyWord: keyword,
+      size: 10,
+    })
+  },
 }
 
 export default api
