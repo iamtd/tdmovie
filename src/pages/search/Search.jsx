@@ -59,11 +59,17 @@ const Search = () => {
 
       {searchSuggestion.length > 0 ? (
         <ul className="search__suggestion">
-          {searchSuggestion.map((item, index) => (
-            <Link key={index} to={`/search?q=${encodeURIComponent(item)}`}>
-              <li>{item.replace(/<em>|<\/em>/g, '')}</li>
-            </Link>
-          ))}
+          {searchSuggestion.map((item, index) => {
+            const itemReplaced = item.replace(/<em>|<\/em>/g, '')
+            return (
+              <Link
+                key={index}
+                to={`/search?q=${encodeURIComponent(itemReplaced)}`}
+              >
+                <li>{itemReplaced}</li>
+              </Link>
+            )
+          })}
         </ul>
       ) : null}
 
