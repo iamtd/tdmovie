@@ -57,11 +57,22 @@ const Detail = () => {
       <p className="detail__description">{movieDetail.introduction}</p>
       <ul className="detail__episodes">
         {typeof movieDetail.episodeVo !== 'undefined'
-          ? movieDetail.episodeVo.map((el, i) => (
-              <Link key={i} to={`/${category}/${id}?episode=${el.id}`}>
-                <li>{++i}</li>
-              </Link>
-            ))
+          ? movieDetail.episodeVo.map((el, i) => {
+              console.log(el.id, episode)
+              return (
+                <Link key={i} to={`/${category}/${id}?episode=${el.id}`}>
+                  <li
+                    className={
+                      parseInt(el.id) === parseInt(episode)
+                        ? 'detail__episodes--active'
+                        : null
+                    }
+                  >
+                    {++i}
+                  </li>
+                </Link>
+              )
+            })
           : 'Error'}
       </ul>
       <div className="detail__similar">

@@ -58,6 +58,10 @@
     flex-wrap: wrap;
     margin-top: 2rem;
 
+    & &--active {
+      background-color: $color-secondary;
+    }
+
     li {
       @include flex(center, center);
       width: 3rem;
@@ -83,19 +87,16 @@
       width: 100%;
       margin-top: 1rem;
       display: flex;
+      @include flex(space-between, unset);
       flex-wrap: wrap;
-
-      > * ~ * {
-        margin-left: 1rem;
-      }
 
       li {
         width: 16rem;
-
-        margin-top: 1rem;
+        margin-top: 2rem;
 
         @include mobile {
-          width: 10rem;
+          width: 9.6rem;
+          line-height: 1.2;
         }
 
         img {
@@ -108,7 +109,9 @@
   &__back {
     border: none;
     border-bottom: 2px solid $color-text;
+    margin-top: 2rem;
 
+    font-size: 1.4rem;
     background-color: transparent;
     color: $color-text;
     cursor: pointer;
