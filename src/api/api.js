@@ -31,9 +31,11 @@ const api = {
     console.log('Movie src: ', mediaUrl)
     console.log('Episode: ', episodeId)
 
-    const subtitles = detail.episodeVo.filter((movie) => movie.id === episodeId)
+    const subtitles = detail.episodeVo.filter(
+      (movie) => parseInt(movie.id) === parseInt(episodeId)
+    )
 
-    // console.log('Subtitle: ', subtitles)
+    console.log('Subtitle: ', subtitles)
 
     return { detail, mediaUrl, subtitles }
   },

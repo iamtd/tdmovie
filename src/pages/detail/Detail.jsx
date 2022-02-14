@@ -58,7 +58,7 @@ const Detail = () => {
       <ul className="detail__episodes">
         {typeof movieDetail.episodeVo !== 'undefined'
           ? movieDetail.episodeVo.map((el, i) => {
-              console.log(el.id, episode)
+              // console.log(el.id, episode)
               return (
                 <Link key={i} to={`/${category}/${id}?episode=${el.id}`}>
                   <li
