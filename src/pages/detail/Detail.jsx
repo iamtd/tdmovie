@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams, useSearchParams, useNavigate } from 'react-router-dom'
 import api from '../../api/api'
 
-import Player from './Player'
+import Player from '../../components/player/Player'
 
 import './detail.scss'
 

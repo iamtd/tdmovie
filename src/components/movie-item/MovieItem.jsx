@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import './movie-item.scss'
 
+import imageResize from '../../api/imageResize'
+
 const MovieItem = ({ movie }) => {
   let category
 
@@ -14,11 +16,11 @@ const MovieItem = ({ movie }) => {
   let movieCover
 
   if (movie.imageUrl) {
-    movieCover = movie.imageUrl
+    movieCover = imageResize(movie.imageUrl, 500)
   } else if (movie.coverVerticalUrl) {
-    movieCover = movie.coverVerticalUrl
+    movieCover = imageResize(movie.coverVerticalUrl)
   } else {
-    movieCover = movie.cover
+    movieCover = imageResize(movie.cover, 1000)
   }
 
   return (
